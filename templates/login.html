@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+{{block.super}}
+<link href="{% static 'local_css/login.css' %}" rel="stylesheet" type="text/css">
+{% endblock css %}
+{% block title %} LOG IN {% endblock title %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+
+<div class="d-flex flex-row justify-content-center">
+
+    <div class="form">
+
+        <div class="d-flex flex-column justify-content-center">
+            <div class="">
+                <h2>LOGIN</h2>
+            </div>
+
+            <div class="mt-4 " id="login_form">
+                <form method="POST" class="" id = "kt_login_signin_form">
+                    {% csrf_token %}
+                    {{form|crispy}}
+                    <button type="submit" class="btn btn-secondary">LOGIN</button>
+                </form>
+            </div>
+            <div class="border-top pt-5 mt-2">
+                <small class="text-muted">
+                    Dont Have an account ? <a href="{% url 'user_app:register' %}" class="active">Sign Up</a>
+
+                </small>
+            </div>
+
+        </div>
+
+    </div>
+    <div>
+        <img src="{% static 'assets/media/svg/illustrations/features.svg' %}" id="login_svg" >
+
+    </div>
+</div>
+{% endblock content %}
+{% block javascripts %}
+{{block.super}}
+{% endblock javascripts %}

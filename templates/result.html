@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% load social_share %}
+{% load static %}
+{% block css %}
+{{block.super}}
+<link href="{% static 'local_css/result.css' %}" rel="stylesheet" type="text/css" />
+{% endblock css %}
+{% block title %} RESULT {% endblock title %}
+{% block content %}
+
+<div class="container py-5 rounded ">
+    <div class="card card-custom ">
+        <div class="card-header d-flex justify-content-center">
+            <div class="card-title ">
+                <h3 class="card-title align-items-start flex-column">
+                    <span class="card-label font-weight-bolder text-dark "><h1>Result</h1></span>
+                </h3>
+            </div>
+            <div class="card-toolbar" id="card_header">
+                <!-- {% if save == True %}
+                <a href="{% url 'user_app:register' %}" class="btn btn-light-warning mr-2">
+                    <i class="flaticon2-bell-4"></i> SAVE
+                </a>
+                {% endif %}
+                <div class="dropdown mr-2">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Share via
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        {% post_to_whatsapp object_or_url "Share via WhatsApp" %}
+                        {% send_email object.title "My test result : hi Check it out!" object_or_url "Share via email" %}
+                        
+                    </div>
+                </div>
+                <div class="btn btn-light-success  text-dark" id="total_score">
+                    Total Score {{marks_achieved}}/{{out_off_marks}}
+                </div> -->
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered text-center" id="kt_datatable">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope='col' style="width: 40%;"> Question </th>
+                        <th scope='col' style="width: 30%;"> Answer </th>
+                        <th scope='col'> Score </th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+            <div>
+                <a class="btn btn-light-success mr-2" href="{% url 'user_app:home' %}?retest=True">
+                    RETEST
+                </a>
+            </div>
+            
+                {% if save == True %}
+                <div id="save" class="mr-2 ">
+                    <a href="{% url 'user_app:register' %}" class="btn btn-warning ">
+                  SAVE
+                    </a>
+                </div>
+                {% endif %}
+            <div class="d-flex flex-row justify-content-center" id="share">
+                <div id="whatsapp" class="mr-2 align-middle mt-2">
+                    {% post_to_whatsapp object_or_url "Share via WhatsApp" %}
+                </div>
+                <div id="email" class="mr-2 align-middle mt-2">
+                    {% send_email object.title "My test result : hi Check it out!" object_or_url "Share via email" %}
+                </div>
+                <div id="total_score align-middle">
+                    <a class="btn btn-light-success"><span class="text-dark" id="score">Score: {{marks_achieved}}</span></a>
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+    {% if user.is_authenticated %}
+    {% if user.username == username %}
+
+    <div class="py-5">
+        <div class="row justify-content-around" id="other_results">
+
+        </div>
+    </div>
+
+
+
+
+    {% endif %}
+    {% endif %}
+</div>
+
+
+
+{% endblock content %}
+
+
+{% block javascripts %}
+{{block.super}}
+<script>
+    const data = JSON.parse(("{{data|escapejs}}"))
+</script>
+<script src="{% static 'local_javascript/result.js' %}">
+
+</script>
+{% endblock javascripts %}

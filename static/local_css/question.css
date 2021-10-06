@@ -1,0 +1,25 @@
+
+body{
+    margin: 0;
+    font-size: 16px;
+    /* background-color: #009688; */
+}
+
+.custom-box{
+    max-width: 900px;
+    background-color: #ffffff;
+    margin: 40px auto;
+    border-radius: 5px;
+    padding: 5px;
+
+}
+
+.option{
+    
+    padding: 15px;
+    
+    
+    
+    margin-bottom: 10px;
+   
+}

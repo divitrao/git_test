@@ -1,0 +1,26 @@
+#login_svg{
+    width: 100%;
+    height: auto;
+}
+
+input[type="text"]{
+    border: none;
+    fill: none;
+    border-bottom: 1px solid black;
+    background: transparent;
+    outline: none;
+    height: 40px;
+}
+
+input[type="password"]{
+    border: none;
+    fill: none;
+    border-bottom: 1px solid black;
+    background: transparent;
+    outline: none;
+    height: 40px;
+}
+
+/* #login_form{
+    width: 200%;
+} */

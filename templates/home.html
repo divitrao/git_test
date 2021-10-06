@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}
+HOME
+{% endblock title %}
+{% load static %}
+{% block css %}
+{{block.super}}
+<link href="{% static 'local_css/home.css' %}" rel="stylesheet" type="text/css" />
+{% endblock css %}
+
+
+{% block content %}
+{{block.super}}
+
+<div id="mental_health">
+    <div class="description d-flex flex-column">
+        <div class="mb-2">Mental Health Matters</div>
+        <div class="text-center">
+        <a  class="btn btn-secondary " style="width: 180px; height: 60px; text-align: center; line-height: 40px; font-weight: bolder;" href="{% url 'ghq_app:questions' %}">
+            TAKE A TEST
+         </a>
+        </div>
+    </div>
+   
+</div>
+
+
+{% endblock content %}

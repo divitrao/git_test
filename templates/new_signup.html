@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% block redirect_home %}
+		<li class="nav-item p-3">
+			<a href="{% url 'user_app:home' %}" class="nav-link active accounts">
+
+				HOME
+			</a>
+		</li>
+{% endblock redirect_home %}
+{% block register %}
+{% endblock register %}
+{% block login %}
+{{block.super}}
+{% endblock login %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block css %}
+{{block.super}}
+<link href="{% static 'assets/css/pages/login/login-1.css' %}" rel="stylesheet" type="text/css" />
+{% endblock css %}
+		{% block content %}
+		{{block.super}}
+		<div class="d-flex flex-column flex-root">
+			<!--begin::Login-->
+			<div class="login login-1 login-signin-on d-flex flex-column flex-lg-row flex-column-fluid bg-white" id="kt_login">
+				<!--begin::Content-->
+				<div class="login-content flex-row-fluid d-flex flex-column justify-content-center position-relative overflow-hidden p-7 mx-auto">
+					<!--begin::Content body-->
+					<div class="d-flex flex-column-fluid flex-center">
+						<!--begin::Signin-->
+						<div class="login-form login-signin">
+							<!--begin::Form-->
+							<form class="form" method="POST" >
+                                <h1 class="text-center">New User Registration</h1>
+                                {% csrf_token %}
+								{{form|crispy}}
+                                <button class="btn btn-primary"> submit</button>
+								<!--end::Action-->
+							</form>
+							<!--end::Form-->
+						</div>
+						<!--end::Signin-->
+					</div>
+					<!--end::Content body-->
+					<!--begin::Content footer-->
+					
+					<!--end::Content footer-->
+				</div>
+				<!--end::Content-->
+				<!--begin::Aside-->
+				<div class="login-aside d-flex flex-column flex-row-auto" style="background-color: #FCFFF1;">
+					<!--begin::Aside Top-->
+					<div class="d-flex flex-column-auto flex-column pt-lg-40 pt-15">
+						
+					</div>
+					<!--end::Aside Top-->
+					<!--begin::Aside Bottom-->
+					<div class="aside-img d-flex flex-row-fluid bgi-no-repeat bgi-position-y-bottom bgi-position-x-center" style="background-image: url('{% static 'assets/media/svg/illustrations/login-visual-5.svg' %}')"></div>
+					<!--end::Aside Bottom-->
+				</div>
+				<!--begin::Aside-->
+			</div>
+			<!--end::Login-->
+		</div>
+
+
+
+		
+		
+		<!-- <div class="d-flex flex-column flex-row-fluid wrapper no-left-right" id="kt_wrapper">
+			
+			<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+				
+				
+				<div class="d-flex flex-column-fluid">
+					
+					<div class="container">
+						<div class="login-form login-signin">
+							<div class="text-center mb-5 mb-lg-10">
+								<h2 class="font-weight-bold">New User Registration</h2>
+							</div>								
+						</div>
+						<div class="card card-custom card-transparent">
+							<div class="card-body p-0">
+								
+								<div class="wizard wizard-4 five-col" id="kt_wizard" data-wizard-state="step-first" data-wizard-clickable="true">
+									
+									<div class="card card-custom card-shadowless rounded-top-0">
+										<div class="card-body p-0">
+											<div class="row justify-content-center py-8 px-8 py-lg-15 px-lg-10">
+												<div class="col-xl-12 col-xxl-7">
+													
+													<form class="form mt-0 mt-lg-10" id="kt_form" method="POST">
+                                                        {% csrf_token %}
+														{{form|crispy}}
+                                                        <button type="submit" class="btn btn-primary">SUBMIT</button>
+													</form>
+													
+												</div>
+											</div>
+										</div>
+									</div>
+									
+								</div>
+								
+							</div>
+						</div>
+					</div>
+					
+				</div>
+				
+			</div>
+			
+		</div> -->
+		
+		
+		{% endblock content %}
+		
+		{% block javascripts %}
+		{{block.super}}
+		<script src="{% static 'assets/js/pages/custom/login/login-general.js' %}"></script>
+		{% endblock javascripts %}

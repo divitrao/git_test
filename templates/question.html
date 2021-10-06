@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block redirect_home %}
+		
+{% endblock redirect_home %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %} QUESTION {% endblock title %}
+{% block css %}
+{{block.super}}
+<link href="{% static 'local_css/question.css' %}" rel="stylesheet" type="text/css" />
+{% endblock css %}
+{% block content %}
+
+
+
+<form method="POST" class="container py-5 rounded">
+
+    {% csrf_token %}
+
+   
+    <div class="card card-custom">
+        <div class="card-header">
+         <div class="card-title">
+                   <span class="card-icon">
+                       <i class="flaticon2-chat-1 text-primary"></i>
+                   </span>
+          <h1 class="card-label">
+            {{question}}
+           
+          </h1>
+         </div>
+            <div class="card-toolbar text-muted">
+                Question {{current_question_number}} of {{total_questions}}
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="radio-list ">
+                <div class="option">{{form.user_answer.0}}</div>
+                <div class="option">{{form.user_answer.1}}</div>
+                <div class="option">{{form.user_answer.2}}</div>
+                <div class="option">{{form.user_answer.3}}</div>
+
+
+            </div>
+        </div>
+           <div class="card-footer d-flex justify-content-center">
+               
+            <button type="submit" class="btn btn-success ">{{submit_button_name}}</button>
+        </div>
+    </div>
+
+</form>
+
+{% endblock content %}
+{% block javascripts %}
+<script src="{% static 'local_javascript/question.js' %}"></script>
+{% endblock javascripts %}

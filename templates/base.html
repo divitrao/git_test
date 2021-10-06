@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% block css %}
+        <link href="{% static 'assets/plugins/global/plugins.bundle.css' %}" rel="stylesheet" type="text/css" />
+		<link href="{% static 'assets/plugins/custom/prismjs/prismjs.bundle.css' %}" rel="stylesheet" type="text/css" />
+		<link href="{% static 'assets/css/style.bundle.css' %}" rel="stylesheet" type="text/css" />
+		<link href="{% static 'assets/css/custom-style.css' %}" rel="stylesheet" type="text/css" />
+        {% endblock css %}
+        <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+    <title>{% block title %}{% endblock title %}</title>
+</head>
+<body>
+    
+
+    {% block content %}
+    <!-- header start -->
+    <div>
+    <ul class="nav bg-dark ">
+        <ul class="nav ml-auto nav-boldest">
+            {% block redirect_home %}
+            {% endblock redirect_home %}
+            {% if user.is_authenticated %}
+            
+            <li class="nav-item p-3 ">
+                <a class="nav-link active accounts text-white" href="#">Hi {{user.username}}</a>
+                
+            </li>
+            {% if result != 0 %}
+            <li class="nav-item p-3 ">
+                
+                    <a class="nav-link active accounts" href="{% url 'ghq_app:result' quiz_taken=result %}">
+                        Results
+                    </a>
+                
+                
+            </li>
+            {% endif %}
+            <li class="nav-item p-3">
+                <a href="{% url 'user_app:logout' %}" class="nav-link active accounts">
+    
+                    LOGOUT
+                </a>
+            </li>
+            {% else %}
+            {% block register %}
+            <li class="nav-item p-3">
+                <a href="{% url 'user_app:register' %}" class="nav-link active accounts" id="register">
+                    SIGN UP
+                </a>
+            </li>
+            {% endblock register %}
+            {% block login %}
+            <li class="nav-item p-3 bold text-white ">
+                <a href="{% url 'user_app:login' %}" class="nav-link active accounts" id="login">
+                    LOGIN
+                </a>
+            </li>
+            {% endblock login %}
+        </ul>
+        {% endif %}
+    
+    </ul>
+</div>
+    <!-- header end -->
+    {% endblock content %}
+
+    {% block javascripts %}
+        
+		<script>var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";</script>
+		<script>var KTAppSettings = { "breakpoints": { "sm": 576, "md": 768, "lg": 992, "xl": 1200, "xxl": 1200 }, "colors": { "theme": { "base": { "white": "#ffffff", "primary": "#6993FF", "secondary": "#E5EAEE", "success": "#1BC5BD", "info": "#8950FC", "warning": "#FFA800", "danger": "#F64E60", "light": "#F3F6F9", "dark": "#212121" }, "light": { "white": "#ffffff", "primary": "#E1E9FF", "secondary": "#ECF0F3", "success": "#C9F7F5", "info": "#EEE5FF", "warning": "#FFF4DE", "danger": "#FFE2E5", "light": "#F3F6F9", "dark": "#D6D6E0" }, "inverse": { "white": "#ffffff", "primary": "#ffffff", "secondary": "#212121", "success": "#ffffff", "info": "#ffffff", "warning": "#ffffff", "danger": "#ffffff", "light": "#464E5F", "dark": "#ffffff" } }, "gray": { "gray-100": "#F3F6F9", "gray-200": "#ECF0F3", "gray-300": "#E5EAEE", "gray-400": "#D6D6E0", "gray-500": "#B5B5C3", "gray-600": "#80808F", "gray-700": "#464E5F", "gray-800": "#1B283F", "gray-900": "#212121" } }, "font-family": "Poppins" };</script>
+		<script src="  {% static 'assets/plugins/global/plugins.bundle.js' %}"></script>
+		<script src="  {% static 'assets/plugins/custom/prismjs/prismjs.bundle.js' %}"></script>
+		<script src="  {% static 'assets/js/scripts.bundle.js' %}"></script>
+        {% endblock javascripts %}
+    
+</body>
+</html>

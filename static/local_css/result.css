@@ -1,0 +1,40 @@
+#score{
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+#share{
+  margin-right: 8%;
+}
+
+@media only screen and (max-width:430px) {
+  #share{
+    margin-right: 2%;
+  }
+}
+
+@media only screen and (max-width:381px) {
+  #share{
+    margin-right: 5%;
+  }
+}
+
+@media only screen and (max-width:390px) {
+  #score{
+    font-size: 5px;
+    }
+} 
+
+@media only screen and (max-width:430px) {
+  #score{
+    font-size: 15px;
+    }
+} 
+
+@media only screen and (max-width:591px){
+ #other_results{
+  display: flex;
+  flex-direction: column;
+ }
+}
+

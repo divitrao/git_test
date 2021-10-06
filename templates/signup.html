@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+{{block.super}}
+<link href="{% static 'local_css/signup.css'  %}"  rel="stylesheet" type="text/css" >
+{% endblock css %}
+{% load crispy_forms_tags %}
+{% block title %} REGISTER {% endblock title %}
+{% block content %}
+{{block.super}}
+
+
+
+<div class="container">
+
+    <div class="d-flex flex-column justify-content-center">
+        <div>
+        <h3 class="text-center">SIGN UP</h3>
+        </div>
+        <div class="mt-3">
+            <form method="POST">
+                {% csrf_token %}
+                {{form|crispy}}
+                <button type="submit" class="btn btn-success">SUBMIT</button>
+            
+            </form>
+        </div>
+        <div class="border-top pt-5 mt-2">
+            <small class="text-muted">
+                Already have an account ? <a href="{% url 'user_app:login' %}" class="active">Sign in</a>
+
+            </small>
+        </div>
+    </div>
+    
+
+</div>
+{% endblock content %}
